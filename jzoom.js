@@ -9,11 +9,11 @@
  *
  * Copyright (c) 2016 Shen Ting
  */
-(function($) {
+(function ($) {
     'use strict';
 
-    $.fn.jzoom = function(options) {
-        return this.each(function() {
+    $.fn.jzoom = function (options) {
+        return this.each(function () {
             // 设置默认属性
             // Set up default options
             var defaultOptions = {
@@ -22,7 +22,6 @@
                 position: 'right',
                 offsetX: 20,
                 offsetY: 0,
-                opacity: 0.6,
                 bgColor: '#fff',
                 loading: 'Loading...'
             };
@@ -46,19 +45,14 @@
 
             // 获取镜头div，设置样式，部分样式从属性设置中取得
             // Get lens div and add css
-            var $jzoomLens = $('<div></div>');
+            var $jzoomLens = $('<div></div>').addClass('zoom-lens');
             $jzoomLens.css({
-                position: 'absolute',
-                zIndex: '990',
-                opacity: options.opacity,
-                cursor: 'move',
-                border: '1px solid #ccc',
                 backgroundColor: options.bgColor
             });
 
             // 获取放大镜div，设置样式，部分样式从属性设置中取得
             // Get zooming window and add css
-            var $jzoomDiv = $('<div></div>');
+            var $jzoomDiv = $('<div></div>').addClass('zoom-img');
             var jzoomDivLeft, jzoomDivTop;
 
             switch (options.position) {
@@ -85,12 +79,6 @@
                 top: jzoomDivTop + 'px',
                 width: options.width + 'px',
                 height: options.height + 'px',
-                position: 'absolute',
-                zIndex: '999',
-                overflow: 'hidden',
-                border: '1px solid #ccc',
-                fontSize: '20px',
-                textAlign: 'center',
                 lineHeight: options.height + 'px'
             });
 
@@ -109,16 +97,18 @@
 
             // 添加鼠标事件
             // Mouse events
-            $jzoom.mouseenter(function() {
-                    $jzoomLens.show();
-                    $jzoomDiv.show();
+            $jzoom.mouseenter(function () {
+                $jzoomLens.addClass('visible');
+                $jzoomDiv.addClass('visible');
 
-                    if (flag === 0) {
-                        firstEnter();
-                        flag++;
-                    }
-                })
-                .mousemove(function(e) {
+                $jzoom.trigger('zoom.enter');
+
+                if (flag === 0) {
+                    firstEnter();
+                    flag++;
+                }
+            })
+                .mousemove(function (e) {
                     // 计算镜头div坐标
                     // Calculate coordinates of lens div
                     finalX = calcDistance(e.pageX, JzoomOffset.left, $jzoomLens.width(), CriticalX);
@@ -136,9 +126,10 @@
                         top: -finalY * DistProportionY + 'px'
                     });
                 })
-                .mouseleave(function() {
-                    $jzoomLens.hide();
-                    $jzoomDiv.hide();
+                .mouseleave(function () {
+                    $jzoomLens.removeClass('visible');
+                    $jzoomDiv.removeClass('visible');
+                    $jzoom.trigger('zoom.hide');
                 });
 
             /**

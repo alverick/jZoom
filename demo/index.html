@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="../zoom.css">
     <link rel="stylesheet" href="css/cv.css">
     <link rel="stylesheet" href="css/demo.css">
     <script src="https://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
@@ -78,6 +79,10 @@
         $('#PS4').jzoom();
         $('#Xbox').jzoom({
             position: "left"
+        }).on('zoom.enter',function(evt){
+            console.log('enter',evt.currentTarget);
+        }).on('zoom.hide',function(){
+            console.log('hide');
         });
     </script>
 </body>

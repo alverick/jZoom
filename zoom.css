@@ -1,0 +1,28 @@
+.zoom-lens {
+    position: absolute;
+    z-index: 990;
+    cursor: move;
+    border: 1px solid #ccc;
+    transition: opacity 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.zoom-lens.visible {
+    opacity: 0.6;
+    visibility: visible;
+}
+.zoom-img{
+    position: absolute;
+    z-index: 999;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    text-align: center;
+    transition: opacity 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.zoom-img.visible {
+    opacity: 1;
+    visibility: visible;
+}

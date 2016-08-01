@@ -1,7 +1,10 @@
 {
   "name": "jzoom",
   "description": "A tiny and easy-using jQuery plugin for zoomimg images",
-  "main": "jzoom.js",
+  "main": [
+    "jzoom.js",
+    "jzoom.css"
+  ],
   "authors": [
     "pciapcib <pciapcib@163.com>"
   ],

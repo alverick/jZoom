@@ -1,7 +1,7 @@
 /*!
  * jZoom.js
  *
- * Version 1.1.6
+ * Version 1.1.9
  *
  * https://github.com/pciapcib/jZoom
  *

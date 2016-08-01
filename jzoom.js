@@ -89,8 +89,7 @@
 
             // 声明全局变量和常量
             // Variables
-            var flag = 0,
-                JzoomOffset = $jzoom.offset(),
+            var JzoomOffset = $jzoom.offset(),
                 CriticalX, CriticalY,
                 finalX, finalY,
                 DistProportionX, DistProportionY;
@@ -98,9 +97,8 @@
             // 添加鼠标事件
             // Mouse events
             $jzoom.mouseenter(function () {
-                if (flag === 0) {
+                if ($jzoom.find('.zoom-lens').length < 1) {
                     firstEnter();
-                    flag++;
                 }
 
                 $jzoomLens.addClass('visible');

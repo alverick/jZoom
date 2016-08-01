@@ -98,15 +98,16 @@
             // 添加鼠标事件
             // Mouse events
             $jzoom.mouseenter(function () {
+                if (flag === 0) {
+                    firstEnter();
+                    flag++;
+                }
+
                 $jzoomLens.addClass('visible');
                 $jzoomDiv.addClass('visible');
 
                 $jzoom.trigger('zoom.enter');
 
-                if (flag === 0) {
-                    firstEnter();
-                    flag++;
-                }
             })
                 .mousemove(function (e) {
                     // 计算镜头div坐标

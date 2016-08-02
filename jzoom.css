@@ -7,11 +7,13 @@
     opacity: 0;
     visibility: hidden;
 }
+
 .zoom-lens.visible {
     opacity: 0.6;
     visibility: visible;
 }
-.zoom-img{
+
+.zoom-img {
     position: absolute;
     z-index: 999;
     overflow: hidden;
@@ -22,6 +24,7 @@
     opacity: 0;
     visibility: hidden;
 }
+
 .zoom-img.visible {
     opacity: 1;
     visibility: visible;

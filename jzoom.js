@@ -1,7 +1,7 @@
 /*!
  * jZoom.js
  *
- * Version 1.1.9
+ * Version 1.1.11
  *
  * https://github.com/pciapcib/jZoom
  *
@@ -71,6 +71,10 @@
                 case 'left':
                     jzoomDivLeft = -options.width - options.offsetX;
                     jzoomDivTop = 0;
+                    break;
+                case 'over':
+                    jzoomDivLeft = 0 + options.offsetX;
+                    jzoomDivTop = 0 + options.offsetY;
                     break;
             }
 

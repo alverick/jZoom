@@ -78,7 +78,9 @@
     <script>
         $('#PS4').jzoom();
         $('#Xbox').jzoom({
-            position: "left"
+            position: "over",
+            offsetX: -30,
+            offsetY: -30
         }).on('zoom.enter',function(evt){
             console.log('enter',evt.currentTarget);
         }).on('zoom.hide',function(){
